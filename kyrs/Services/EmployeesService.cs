@@ -78,5 +78,16 @@ namespace kyrs.Services
 
             return result.ToDictionary(x => x.DepartmentName, x => x.AverageSalary);
         }
+        // Отримати всі відділи для випадаючого списку
+        public async Task<List<Departments>> GetAllDepartmentsAsync()
+        {
+            return await _context.Departments.ToListAsync();
+        }
+
+        // Отримати всі посади для випадаючого списку
+        public async Task<List<Positions>> GetAllPositionsAsync()
+        {
+            return await _context.Positions.ToListAsync();
+        }
     }
 }

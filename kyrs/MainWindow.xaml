@@ -30,9 +30,9 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Name="BtnAddEmployee" Content="Додати співробітника" Margin="5" Height="30"/>
-            <Button Name="BtnDeleteEmployee" Content="Видалити співробітника" Margin="5" Height="30" Grid.Column="1"/>
-            <Button Name="BtnOpenStatistics" Content="Статистика" Margin="5" Height="30" Grid.Column="2"/>
+            <Button Name="BtnAddEmployee" Content="Додати співробітника" Margin="5" Height="30" Click="BtnAddEmployee_Click"/>
+            <Button Name="BtnDeleteEmployee" Content="Видалити співробітника" Margin="5" Height="30" Grid.Column="1" Click="BtnDeleteEmployee_Click"/>
+            <Button Name="BtnOpenStatistics" Content="Статистика" Margin="5" Height="30" Grid.Column="2" Click="BtnOpenStatistics_Click"/>
             <Button Name="BtnEditEmployee" Content="Редагувати інформацію" Margin="5" Height="30" Grid.Column="3"/>
         </Grid>
 
