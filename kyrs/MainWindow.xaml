@@ -5,22 +5,91 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:kyrs"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <TabControl>
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="31*"/>
-                        <ColumnDefinition Width="763*"/>
-                    </Grid.ColumnDefinitions>
-                    <Button Content="Button" HorizontalAlignment="Left" Margin="512,275,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                </Grid>
-            </TabItem>
-        </TabControl>
+        Title="Управління персоналом" Height="500" Width="900" WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <!-- Строка 0: Кнопки управления -->
+            <RowDefinition Height="Auto"/>
+            <!-- Строка 1: Таблица и детальная информация -->
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <!-- Левая колонка для таблицы -->
+            <ColumnDefinition Width="1.5*"/>
+            <!-- Правая колонка для детальной информации -->
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Верхняя панель с кнопками (как в примере преподавателя) -->
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Name="BtnAddEmployee" Content="Додати співробітника" Margin="5" Height="30"/>
+            <Button Name="BtnDeleteEmployee" Content="Видалити співробітника" Margin="5" Height="30" Grid.Column="1"/>
+            <Button Name="BtnOpenStatistics" Content="Статистика" Margin="5" Height="30" Grid.Column="2"/>
+            <Button Name="BtnEditEmployee" Content="Редагувати інформацію" Margin="5" Height="30" Grid.Column="3"/>
+        </Grid>
+
+        <!-- Таблица для вывода сотрудников (слева) -->
+        <!-- Я оставил тут только основные колонки, чтобы таблица не была перегружена -->
+        <DataGrid Grid.Row="1" Grid.Column="0" Name="EmployeesDataGrid" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" HeadersVisibility="Column" Margin="5,0,10,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Прізвище" Binding="{Binding LastName}" Width="*"/>
+                <DataGridTextColumn Header="Ім'я" Binding="{Binding FirstName}" Width="*"/>
+                <DataGridTextColumn Header="Відділ" Binding="{Binding Department.Name}" Width="*"/>
+                <DataGridTextColumn Header="Зарплата" Binding="{Binding Money}" Width="80"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Панель детальной информации (справа) -->
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="10,0,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Прізвище:" Grid.Row="0" Grid.Column="0" Margin="0,10,15,10" FontWeight="Bold"/>
+                <Label Name="LblLastName" Content="Label" Grid.Row="0" Grid.Column="1" Margin="0,5,0,5" VerticalAlignment="Center"/>
+
+                <TextBlock Text="Ім'я:" Grid.Row="1" Grid.Column="0" Margin="0,10,15,10" FontWeight="Bold"/>
+                <Label Name="LblFirstName" Content="Label" Grid.Row="1" Grid.Column="1" Margin="0,5,0,5" VerticalAlignment="Center"/>
+
+                <TextBlock Text="По батькові:" Grid.Row="2" Grid.Column="0" Margin="0,10,15,10" FontWeight="Bold"/>
+                <Label Name="LblMiddleName" Content="Label" Grid.Row="2" Grid.Column="1" Margin="0,5,0,5" VerticalAlignment="Center"/>
+
+                <TextBlock Text="Відділ:" Grid.Row="3" Grid.Column="0" Margin="0,10,15,10" FontWeight="Bold"/>
+                <Label Name="LblDepartment" Content="Label" Grid.Row="3" Grid.Column="1" Margin="0,5,0,5" VerticalAlignment="Center"/>
+
+                <TextBlock Text="Посада:" Grid.Row="4" Grid.Column="0" Margin="0,10,15,10" FontWeight="Bold"/>
+                <Label Name="LblPosition" Content="Label" Grid.Row="4" Grid.Column="1" Margin="0,5,0,5" VerticalAlignment="Center"/>
+
+                <TextBlock Text="Дата народження:" Grid.Row="5" Grid.Column="0" Margin="0,10,15,10" FontWeight="Bold"/>
+                <Label Name="LblAge" Content="Label" Grid.Row="5" Grid.Column="1" Margin="0,5,0,5" VerticalAlignment="Center"/>
+
+                <TextBlock Text="Початок роботи:" Grid.Row="6" Grid.Column="0" Margin="0,10,15,10" FontWeight="Bold"/>
+                <Label Name="LblStartWork" Content="Label" Grid.Row="6" Grid.Column="1" Margin="0,5,0,5" VerticalAlignment="Center"/>
+
+                <TextBlock Text="Зарплата:" Grid.Row="7" Grid.Column="0" Margin="0,10,15,10" FontWeight="Bold"/>
+                <Label Name="LblMoney" Content="Label" Grid.Row="7" Grid.Column="1" Margin="0,5,0,5" VerticalAlignment="Center"/>
+            </Grid>
+        </StackPanel>
 
     </Grid>
 </Window>
